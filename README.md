@@ -4,7 +4,7 @@
 to queues and other apps consume them, over AMQP, MQTT or STOMP.
 
 This template installs it on a Cubeship instance, with its management UI on a
-domain and its queues kept in a volume.
+domain, AMQP on a TCP port, and its queues kept in a volume.
 
 ## What it creates
 
@@ -13,7 +13,7 @@ domain and its queues kept in a volume.
   choose; queues, users and definitions are kept in a volume at
   `/var/lib/rabbitmq`.
 
-It needs Cubeship 0.7.0 or newer.
+It needs Cubeship 0.7.2 or newer.
 
 ## What you are asked
 
@@ -22,18 +22,23 @@ It needs Cubeship 0.7.0 or newer.
 | Where the management UI answers | A domain you control, pointed at your instance. |
 | The username apps and the UI sign in with | Anything; `admin` unless you change it. |
 | That user's password | Nothing — the instance generates it and shows it once. **Keep a copy.** |
+| The port AMQP answers on | `5672` by default. Choose a port from `1024` to `65535`, and open it in your provider's firewall too. |
 
 ## Connecting an app
 
-AMQP is not on the domain: the domain carries HTTP only. An app on the same
-instance connects at RabbitMQ's internal address, shown on its page in the
+AMQP is not on the domain: the domain carries HTTP only. From outside the
+instance, connect to the instance's address on the port you chose. From an app
+on the same instance, use RabbitMQ's internal address, shown on its page in the
 dashboard. Installed with the suggested names, that is:
 
 ```
 amqp://<username>:<password>@cubeship-rabbitmq-production-rabbitmq:5672
 ```
 
-Nothing outside the instance can reach AMQP.
+For an external client, the equivalent URL is
+`amqp://<username>:<password>@<your VPS address>:<chosen port>`. AMQP has no
+TLS configured here, so do not publish it to an untrusted network without
+putting an authenticated, encrypted proxy in front of it.
 
 ## After installing
 

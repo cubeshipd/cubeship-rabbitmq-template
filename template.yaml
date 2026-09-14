@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=https://cubeship.dev/schema/template/v1.json
 version: 1
-# The first release that gives a volume to the user its image runs as.
-minCubeship: "0.7.0"
+# The first release that publishes AMQP and gives a volume to the user its image runs as.
+minCubeship: "0.7.2"
 project: rabbitmq
 
 inputs:
@@ -16,6 +16,13 @@ inputs:
     type: secret
     label: That user's password
     generate: 24
+  - key: amqpPort
+    type: number
+    label: The port AMQP answers on
+    help: Choose a port from 1024 to 65535, and open it in your provider's firewall too.
+    default: 5672
+    min: 1024
+    max: 65535
 
 apps:
   - key: broker
@@ -28,6 +35,9 @@ apps:
     health: /
     domains:
       - host: ${input.domain}
+    tcp:
+      - port: 5672
+        host: ${input.amqpPort}
     volumes:
       - path: /var/lib/rabbitmq
     limits: { cpu: 1, memory: 1Gi }
