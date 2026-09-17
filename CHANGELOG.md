@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/cubeshipd/cubeship-rabbitmq-template/compare/v1.1.0...v1.1.1) (2026-09-17)
+
+
+### Bug Fixes
+
+* cut a release when the upstream app updates ([d14e200](https://github.com/cubeshipd/cubeship-rabbitmq-template/commit/d14e200583efaa619c41e26c5321498c83e0e8a8))
+
 ## [1.1.0](https://github.com/cubeshipd/cubeship-rabbitmq-template/compare/v1.0.1...v1.1.0) (2026-09-14)
 
 
