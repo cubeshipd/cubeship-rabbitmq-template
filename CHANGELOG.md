@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.1](https://github.com/cubeshipd/cubeship-rabbitmq-template/compare/v1.1.0...v1.1.1) (2026-09-17)
+
+
+### Bug Fixes
+
+* cut a release when the upstream app updates ([d14e200](https://github.com/cubeshipd/cubeship-rabbitmq-template/commit/d14e200583efaa619c41e26c5321498c83e0e8a8))
+* update rabbitmq docker tag to v4.3.6 ([#5](https://github.com/cubeshipd/cubeship-rabbitmq-template/issues/5)) ([536b57f](https://github.com/cubeshipd/cubeship-rabbitmq-template/commit/536b57fef0459ab85e3830bde7d99d20abe8e506))
+
 ## [1.1.0](https://github.com/cubeshipd/cubeship-rabbitmq-template/compare/v1.0.1...v1.1.0) (2026-09-14)
 
 
